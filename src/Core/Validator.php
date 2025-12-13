@@ -45,13 +45,13 @@ class Validator
                 break;
                 
             case 'min':
-                if (!empty($value) && strlen($value) < (int)$ruleValue) {
+                if (!empty($value) && mb_strlen($value) < (int)$ruleValue) {
                     $this->errors[$field][] = "O campo {$field} deve ter no mínimo {$ruleValue} caracteres.";
                 }
                 break;
                 
             case 'max':
-                if (!empty($value) && strlen($value) > (int)$ruleValue) {
+                if (!empty($value) && mb_strlen($value) > (int)$ruleValue) {
                     $this->errors[$field][] = "O campo {$field} deve ter no máximo {$ruleValue} caracteres.";
                 }
                 break;

@@ -18,7 +18,8 @@ class Database
                 $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset={$config['charset']}";
                 self::$instance = new PDO($dsn, $config['username'], $config['password'], $config['options']);
             } catch (PDOException $e) {
-                die("Erro de conexão com o banco de dados: " . $e->getMessage());
+                error_log("Erro de conexão com o banco de dados: " . $e->getMessage());
+                die("Erro ao conectar com o banco de dados. Por favor, tente novamente mais tarde.");
             }
         }
         

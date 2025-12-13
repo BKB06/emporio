@@ -11,7 +11,9 @@ class View
         $viewPath = __DIR__ . "/../Views/{$view}.php";
         
         if (!file_exists($viewPath)) {
-            die("View não encontrada: {$view}");
+            error_log("View não encontrada: {$view}");
+            http_response_code(404);
+            die("Página não encontrada.");
         }
         
         require $viewPath;

@@ -53,15 +53,9 @@
                             <label for="type" class="form-label">Tipo de Movimentação *</label>
                             <select class="form-select" id="type" name="type" required>
                                 <option value="">Selecione...</option>
-                                <option value="entrada">
-                                    <i class="bi bi-arrow-down-circle"></i> Entrada (Compra, Devolução)
-                                </option>
-                                <option value="saida">
-                                    <i class="bi bi-arrow-up-circle"></i> Saída (Venda, Perda)
-                                </option>
-                                <option value="ajuste">
-                                    <i class="bi bi-arrow-repeat"></i> Ajuste (Correção de Estoque)
-                                </option>
+                                <option value="entrada">Entrada (Compra, Devolução)</option>
+                                <option value="saida">Saída (Venda, Perda)</option>
+                                <option value="ajuste">Ajuste (Correção de Estoque)</option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">

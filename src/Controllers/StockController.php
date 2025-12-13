@@ -61,6 +61,8 @@ class StockController extends Controller
         // Calcular nova quantidade
         $newQuantity = $product['quantity'];
         
+        // Nota: Ajustes sempre adicionam a quantidade especificada
+        // Para reduzir o estoque via ajuste, use movimentação de saída
         if ($type === 'entrada' || $type === 'ajuste') {
             $newQuantity += $quantity;
         } elseif ($type === 'saida') {
