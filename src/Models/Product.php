@@ -32,9 +32,10 @@ class Product extends Model
     
     public static function getLowStock(): array
     {
-        $sql = "SELECT p.*, c.name as category_name 
+        $sql = "SELECT p.*, c.name as category_name, s.name as supplier_name 
                 FROM products p
                 LEFT JOIN categories c ON p.category_id = c.id
+                LEFT JOIN suppliers s ON p.supplier_id = s.id
                 WHERE p.quantity <= p.min_quantity AND p.status = 'ativo'
                 ORDER BY p.quantity ASC";
         return Database::query($sql)->fetchAll();
