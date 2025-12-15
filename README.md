@@ -2,6 +2,30 @@
 
 Sistema moderno de gestão de armazém/estoque desenvolvido com PHP 8.2+, Bootstrap 5 e arquitetura MVC.
 
+## ⚠️ AVISO DE SEGURANÇA IMPORTANTE
+
+> **Este é um projeto de demonstração/portfólio para fins educacionais.**
+
+### 🔴 NUNCA use este sistema em produção sem as seguintes alterações:
+
+1. **Altere TODAS as senhas padrão** imediatamente após a instalação
+2. **Configure credenciais únicas** no arquivo `.env` (nunca use as do `.env.example`)
+3. **Altere os hashes de senha** no arquivo `database/schema.sql` antes de usar em produção
+4. **Use HTTPS** em ambiente de produção (nunca HTTP)
+5. **Revise e fortaleça** as configurações de segurança conforme suas necessidades
+6. **Implemente proteção CSRF** se não estiver presente
+7. **Configure logs de segurança** e monitoramento
+
+### ✅ Boas Práticas Já Implementadas:
+- ✅ Senhas armazenadas com bcrypt
+- ✅ PDO Prepared Statements (proteção SQL Injection)
+- ✅ Validação de inputs
+- ✅ Escape de outputs (proteção XSS)
+- ✅ Controle de acesso baseado em roles
+- ✅ Arquivo `.env` no `.gitignore`
+
+---
+
 ## 🚀 Funcionalidades
 
 - 📊 **Dashboard** - Estatísticas em tempo real, alertas de estoque baixo
@@ -81,11 +105,22 @@ php -S localhost:8000 -t public
 
 ## 🎯 Credenciais Padrão
 
-**Usuário Admin:**
-- Email: `admin@emporio.com`
-- Senha: `admin123`
+**⚠️ APENAS PARA AMBIENTE DE DESENVOLVIMENTO/TESTE**
 
-⚠️ **Importante:** Altere essas credenciais após o primeiro login!
+| Tipo | Email | Senha | Role |
+|------|-------|-------|------|
+| Admin | admin@emporio.com | admin123 | Admin |
+| Gerente | gerente@emporio.com | admin123 | Gerente |
+| Operador | operador@emporio.com | admin123 | Operador |
+
+### 🔴 AÇÃO OBRIGATÓRIA:
+**Altere TODAS essas credenciais antes de usar em qualquer ambiente que não seja local/teste!**
+
+Para alterar senhas:
+1. Faça login com a conta admin
+2. Acesse o gerenciamento de usuários
+3. Altere todas as senhas padrão
+4. Ou execute SQL diretamente no banco de dados
 
 ## 🔒 Segurança
 
@@ -135,6 +170,10 @@ MIT License - sinta-se livre para usar este projeto.
 ## 👨‍💻 Autor
 
 Desenvolvido por BKB06
+
+## 🛡️ Disclaimer
+
+Este projeto foi desenvolvido para fins educacionais e de demonstração. O desenvolvedor não se responsabiliza por uso inadequado ou problemas de segurança decorrentes da implementação em ambiente de produção sem as devidas adaptações e fortalecimento de segurança.
 
 ---
 
