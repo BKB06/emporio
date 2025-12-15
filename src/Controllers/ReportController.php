@@ -62,6 +62,12 @@ class ReportController extends Controller
             case 'movements':
                 $data = StockMovement::getByPeriod($startDate, $endDate);
                 break;
+                
+            default:
+                // Se tipo inválido, usar estoque atual como padrão
+                $type = 'stock';
+                $data = Product::withRelations();
+                break;
         }
         
         // Gerar HTML do relatório
@@ -178,14 +184,14 @@ class ReportController extends Controller
             $totalValue += $itemValue;
             
             $isLowStock = $product['quantity'] <= $product['min_quantity'];
-            $qtyClass = $isLowStock ? ' class="low-stock"' : '';
+            $qtyClass = $isLowStock ? 'low-stock text-right' : 'text-right';
             
             $html .= '<tr>';
             $html .= '<td>' . htmlspecialchars($product['sku']) . '</td>';
             $html .= '<td>' . htmlspecialchars($product['name']) . '</td>';
             $html .= '<td>' . htmlspecialchars($product['category_name'] ?? '-') . '</td>';
             $html .= '<td>' . htmlspecialchars($product['supplier_name'] ?? '-') . '</td>';
-            $html .= '<td' . $qtyClass . ' class="text-right">' . $product['quantity'] . '</td>';
+            $html .= '<td class="' . $qtyClass . '">' . $product['quantity'] . '</td>';
             $html .= '<td class="text-right">' . $product['min_quantity'] . '</td>';
             $html .= '<td class="text-right">R$ ' . number_format($product['unit_price'], 2, ',', '.') . '</td>';
             $html .= '<td class="text-right">R$ ' . number_format($itemValue, 2, ',', '.') . '</td>';
